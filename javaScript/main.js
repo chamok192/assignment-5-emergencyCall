@@ -1,12 +1,4 @@
-// heart icon click event handler 
-let heartBtns = document.getElementsByClassName('fa-heart');
-for (let heartButton of heartBtns) {
-    heartButton.addEventListener('click', function (e) {
-        e.preventDefault();
-        let heartCount = document.getElementById('heartCount');
-        heartCount.innerText = parseInt(heartCount.innerText) + 1;
-    });
-}
+
 
 // call button event handler 
 let callBtns = document.getElementsByClassName('callBtn');
@@ -63,14 +55,25 @@ clearBtn.addEventListener('click', function (e) {
 // copy button event handler 
 const copyBtns = document.getElementsByClassName('copyBtn');
 let copy = document.getElementById('copyCount');
-let copyCount= parseInt(copy.innerText);
+let copyCount = parseInt(copy.innerText);
 
-for(let copyBtn of copyBtns){
+for (let copyBtn of copyBtns) {
     copyBtn.addEventListener('click', function (e) {
         e.preventDefault;
 
         copyCount = copyCount + 1;
         copy.innerText = copyCount;
-        
+
+        const hotline = copyBtn.parentNode.children[2].children[0].innerText;
+
+        navigator.clipboard.writeText(hotline)
+            .then(function () {
+                alert("Copied: " + hotline);
+            })
+            .catch(function (err) {
+                alert("Copy failed: " + err);
+            });
+
+
     });
 }
