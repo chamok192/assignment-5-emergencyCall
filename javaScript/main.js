@@ -1,4 +1,13 @@
 
+// heart icon click event handler 
+let heartBtns = document.getElementsByClassName('fa-heart');
+for (let heartButton of heartBtns) {
+    heartButton.addEventListener('click', function (e) {
+        e.preventDefault();
+        let heartCount = document.getElementById('heartCount');
+        heartCount.innerText = parseInt(heartCount.innerText) + 1;
+    });
+}
 
 // call button event handler 
 let callBtns = document.getElementsByClassName('callBtn');
